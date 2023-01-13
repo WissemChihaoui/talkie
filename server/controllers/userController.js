@@ -66,3 +66,16 @@ module.exports.setAvatar = async(req, res, next) => {
         next(ex)
     }
 };
+module.exports.getUsers = async(req, res, next) => {
+    try{
+        const userData= await User.find({});
+        return res.json({
+            userImage:userData.avatarImage,
+            userId:userData.username,
+            userData
+            
+        });
+    }catch(ex){
+        next(ex)
+    }
+}
