@@ -2,17 +2,18 @@ import React, {useState, useEffect} from 'react'
 import NavbarA from '../components/NavBar/NavBarA'
 import UsersCard from '../components/UsersCard/UsersCard';
 import { getUsersRoute } from '../utils/APIRoutes';
-import axios from "axios" 
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios" ;
 const Chat = () => {
-  const [users, setUsers] = useState([])
-  const [values, setValues] = useState({
-    username:"",
-    
-    avatarImage:"",
-    
-});
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+  console.log(localStorage.getItem('talkie-user'));
+  
 
  useEffect(()=>{
+  if(localStorage.getItem('talkie-user')){
+
+  
   const getUsers = async () =>{
       
     const {data} = await axios.get(getUsersRoute);
@@ -26,6 +27,9 @@ const Chat = () => {
     }
   }
   getUsers();
+}else{
+  navigate("/login");
+}
  },[])
     
  
@@ -38,7 +42,7 @@ const Chat = () => {
       <section className='pt-20 flex justify-center gap-10 flex-wrap'>
       {
           users.map ((user) =>(
-            <UsersCard key={user.username} image={user.avatarImage} name={user.username} />
+            <UsersCard key={user.username} image={user.avatarImage} name={user.username} id={user._id}/>
             
           ))
         }

@@ -79,3 +79,15 @@ module.exports.getUsers = async(req, res, next) => {
         next(ex)
     }
 }
+
+module.exports.getUser = async(req, res, next)=>{
+    try{
+        const userId = rq.params.id;
+        const userData = await User.findById(userId);
+        return res.json({
+            userData
+        });
+    }catch(ex){
+        next(ex)
+    }
+}

@@ -4,3 +4,4 @@ export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
 export const setAvatarRoute = `${host}/api/auth/setAvatar`;
 export const getUsersRoute = `${host}/api/auth/getUsers`;
+export const getUserRoute = `${host}/api/auth/getUser`;

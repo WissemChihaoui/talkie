@@ -4,7 +4,9 @@ import Register from './pages/Register'
 import Chat from './pages/Chat'
 import Login from './pages/Login'
 import SetAvatar from './pages/setAvatar'
+import User from './pages/User'
 const App = () => {
+  const _id ="";
   return (
     <BrowserRouter>
       <Routes>
@@ -12,6 +14,7 @@ const App = () => {
         <Route path='/register' exact element={<Register />}/>
         <Route path='/login' exact element={<Login />}/>
         <Route path='/set-avatar' exact element={<SetAvatar />}/>
+        <Route path={`/user/${_id}`} exact element={<User />}/>
       </Routes>
 </BrowserRouter>  )
 }
