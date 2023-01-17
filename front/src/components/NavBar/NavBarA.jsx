@@ -22,24 +22,24 @@ const NavbarA = () => {
     };
     return (
         
-            <nav className="fixed flex flex-row w-full p-1 justify-around items-center">
-                <a href="./" className="flex items-center">
+            <nav className="fixed flex flex-row w-full p-1 justify-around items-center bg-1">
+                <a href="/" className="flex items-center">
                     <img src={logo} alt="Talkie" className="w-10 h-12" />
                     <label className="text-white font-bold text-2xl">Talkie!</label>
                 </a>
                 <div className="flex flex-row items-center gap-5 ">
                     <ul className="hidden md:flex flex-row items-center text-gray-300 gap-4">
                         <li className="cursor-pointer hover:text-gray-100 duration-100 ease-in-out">
-                           <a href="./">Members</a>
+                           <a href="/">Members</a>
                         </li>
                         <li className="cursor-pointer hover:text-gray-100 duration-100 ease-in-out">
-                            <a href="./groups">Chat Groups</a> 
+                            <a href="/groups">Chat Groups</a> 
                         </li>
                         <li className="cursor-pointer hover:text-gray-100 duration-100 ease-in-out">
-                            <a href="./messages">Messages</a>
+                            <a href="/messages">Messages</a>
                         </li>
                         <li className="cursor-pointer hover:text-gray-100 duration-100 ease-in-out">
-                            <a href="./contact-us">Contact Us</a>
+                            <a href="/contact-us">Contact Us</a>
                         </li>
                     </ul>
                     <div className="relative hidden md:block">
@@ -57,19 +57,19 @@ const NavbarA = () => {
                             }
                         >
                             <a
-                                href="./me"
+                                href="/me"
                                 className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
                             >
                                 Profile
                             </a>
                             <a
-                                href="./notification"
+                                href="/notification"
                                 className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
                             >
                                 Notifications
                             </a>
                             <a
-                                href="./settings"
+                                href="/settings"
                                 className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
                             >
                                 Settings
@@ -98,29 +98,29 @@ const NavbarA = () => {
                         }
                     >
                         <a
-                            href="./me"
+                            href="/me"
                             className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Profile
                         </a>
-                        <a href="./notification" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/notification" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Notifications
                         </a>
-                        <a href="./settings" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/settings" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Settings
                         </a>
-                        <a href="./" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Members
                         </a>
-                        <a href="./groups" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/groups" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Chat Groups
                         </a>
-                        <a href="./messages" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/messages" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Messages
                         </a>
-                        <a href="./contact-us" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/contact-us" className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Contact us
                         </a>
-                        <a className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
+                        <a href="/"className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center">
                             Members
                         </a>
                         <a

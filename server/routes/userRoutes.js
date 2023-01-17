@@ -6,6 +6,6 @@ router.post("/register",register);
 router.post("/login",login);
 router.post("/setAvatar/:id",setAvatar);
 router.get("/getUsers",getUsers)
-router.get("/getUser",getUser)
+router.get("/getUser/:id",getUser)
 
 module.exports = router;

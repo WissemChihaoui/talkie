@@ -15,7 +15,10 @@ input{
 body{
     max-height: 200vh;
     
-    overflow: hidden;
+    
+    background-color: #131324;
+}
+.bg-1{
     background-color: #131324;
 }
 

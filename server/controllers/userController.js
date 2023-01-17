@@ -82,10 +82,12 @@ module.exports.getUsers = async(req, res, next) => {
 
 module.exports.getUser = async(req, res, next)=>{
     try{
-        const userId = rq.params.id;
-        const userData = await User.findById(userId);
+        const userId = req.params.id;
+        const userDataId = await User.findById(userId);
+        userDataId.password = "undefined from SSL";
+        
         return res.json({
-            userData
+            userDataId
         });
     }catch(ex){
         next(ex)

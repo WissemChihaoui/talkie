@@ -29,6 +29,26 @@ const userSchema = new mongoose.Schema({
     avatarImage:{
         type: String,
         default: "",
+    },
+    description:{
+        type:String,
+        default:""
+    },
+    images:{
+        type:Array
+    },
+    friends:{
+        type:Array
+    },
+    isPrivate:{
+        type:Boolean,
+        default:false
+    },
+    friendsReqGets:{
+        type:Array
+    },
+    friendsReqSents:{
+        type:Array,
     }
 });
 

@@ -14,7 +14,7 @@ const App = () => {
         <Route path='/register' exact element={<Register />}/>
         <Route path='/login' exact element={<Login />}/>
         <Route path='/set-avatar' exact element={<SetAvatar />}/>
-        <Route path={`/user/${_id}`} exact element={<User />}/>
+        <Route path={`/user/*`} exact element={<User />}/>
       </Routes>
 </BrowserRouter>  )
 }
