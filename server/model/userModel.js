@@ -49,6 +49,15 @@ const userSchema = new mongoose.Schema({
     },
     friendsReqSents:{
         type:Array,
+    },
+    sexe:{
+        type:String
+    },
+    country:{
+        type:String
+    },
+    age:{
+        type:Number
     }
 });
 
