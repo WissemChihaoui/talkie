@@ -1,55 +1,44 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import NavbarA from '../components/NavBar/NavBarA'
 import UsersCard from '../components/UsersCard/UsersCard';
 import { getUsersRoute } from '../utils/APIRoutes';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from "axios" ;
+import axios from "axios";
 const Chat = () => {
   const [users, setUsers] = useState([]);
+  const [userExist, setUserExist] = useState(false)
   const navigate = useNavigate();
-  console.log(localStorage.getItem('talkie-user'));
-  
 
- useEffect(()=>{
-  if(localStorage.getItem('talkie-user')){
-
-  
-  const getUsers = async () =>{
-      
-    const {data} = await axios.get(getUsersRoute);
-    
-    
-
-    if(data){ 
-      
-      setUsers(data.userData)
-        
-    }
+  if(localStorage.getItem('talkie-user')==null){
+    window.location.href = '/login'
   }
-  getUsers();
-}else{
-  navigate("/login");
-}
- },[])
-    
- 
-
   
-  return (
-    <>
-      <NavbarA />
-
-      <section className='pt-20 flex justify-center gap-10 flex-wrap'>
-      {
-          users.map ((user) =>(
-            <UsersCard key={user.username} image={user.avatarImage} name={user.username} id={user._id}/>
-            
-          ))
+  useEffect(() => {
+    if (localStorage.getItem('talkie-user')) {
+      setUserExist(true)
+      const getUsers = async () => {
+        const { data } = await axios.get(getUsersRoute);
+        if (data) {
+          setUsers(data.userData)
         }
-        
-      </section>
-    </>
-  )
-}
+      }
+      getUsers();
+    };
+  }, [])
+
+      return (
+      <>
+        <NavbarA />
+        <section className='pt-20 flex justify-center gap-10 flex-wrap'>
+          {
+            users.map((user) => (
+              <UsersCard key={user.username} image={user.avatarImage} name={user.username} id={user._id} />
+
+            ))
+          }
+        </section>
+      </>
+    )
+  }
 
 export default Chat
