@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import SetAvatar from './pages/setAvatar'
 import User from './pages/User'
 import Me from './pages/Me'
+import Signup from './pages/Signup'
 
 const App = () => {
   const _id ="";
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/set-avatar' exact element={<SetAvatar />}/>
         <Route path={`/user/*`} exact element={<User />}/>
         <Route path={`/me`} exact element={<Me />}/>
+        <Route path={`/signup`} exact element={<Signup />}/>
       
       </Routes>
 </BrowserRouter>  )

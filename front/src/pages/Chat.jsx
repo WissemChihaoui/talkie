@@ -27,7 +27,7 @@ const Chat = () => {
   }, [])
 
       return (
-      <>
+      <div className='m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500'>
         <NavbarA />
         <section className='pt-20 flex justify-center gap-10 flex-wrap'>
           {
@@ -37,7 +37,7 @@ const Chat = () => {
             ))
           }
         </section>
-      </>
+      </div>
     )
   }
 
