@@ -37,6 +37,13 @@ input{
     vertical-align: baseline;
     width: 100%;
 }
+.menu_hover{
+    box-shadow: rgb(221, 221, 221) 0px 1px 5px 1px;
+    padding: 0px;
+    transition: all 0.5s ease 0s;
+    transform: translate3d(0px, 0px, 0px);
+    width: 83px;
+    }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

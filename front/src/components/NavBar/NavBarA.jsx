@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logo from "../../logo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
@@ -7,6 +7,20 @@ const NavbarA = () => {
     const userData = JSON.parse(localStorage.getItem("talkie-user"));
     const [menu, setMenu] = useState(false);
     const [navMenu, setNavMenu] = useState(false);
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
+
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenu(false);
+      }
+    };
 
     const handleLogout = () => {
         localStorage.clear();
@@ -22,7 +36,7 @@ const NavbarA = () => {
     };
     return (
         
-            <nav className="relative bg-gray-300 flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl ">
+            <nav className="relative bg-gray-300 flex flex-wrap items-center justify-between px-2 py-2 mx-6 my-2 transition-all shadow-none duration-250 ease-soft-in rounded-2xl ">
                 <a href="/" className="flex items-center">
                     <img src={logo} alt="Talkie" className="w-10 h-12" />
                     <label className="mb-0 font-bold capitalize">Talkie!</label>
@@ -42,14 +56,15 @@ const NavbarA = () => {
                             <a href="/contact-us">Contact Us</a>
                         </li>
                     </ul>
-                    <div className="relative hidden lg:block">
+                    <div className="cursor-pointer hidden lg:block">
                         <img
                             src={userData.avatarImage}
                             alt="profile"
-                            className="w-10 h-10 rounded-full cursor-pointer"
+                            className="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
                             onClick={() => toggleMenu()}
                         />
                         <div
+                          ref={menuRef}
                             className={
                                 menu == false
                                     ? "hidden"
@@ -100,7 +115,7 @@ const NavbarA = () => {
                 </div>
                 <div className="relative lg:hidden">
                     <div
-                        className="block  text-white text-2xl cursor-pointer"
+                        className="block  text-gray-500 text-xl cursor-pointer"
                         onClick={() => handleNavMenu()}
                     >
                         <FaBars />
@@ -109,7 +124,7 @@ const NavbarA = () => {
                         className={
                             navMenu == false
                                 ? "hidden"
-                                : "block bg-gray-800 absolute dropdown-menu min-w-max  bg text-base z-50 float-left py-2 list-none top-8 text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0"
+                                : "block absolute dropdown-menu min-w-max text-base z-50 float-left py-2 list-none top-8 text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0  bg-white"
                         }
                     >
                         <a

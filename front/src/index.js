@@ -7,5 +7,6 @@ import "./css/nucleo-svg.css"
 import "./css/perfect-scrollbar.css"
 import "./css/soft-ui-dashboard-tailwind.css"
 import "./css/soft-ui-dashboard-tailwind.css"
+import "./css/tailwind.min.css"
 
 ReactDOM.render(<App />,document.getElementById('root'));

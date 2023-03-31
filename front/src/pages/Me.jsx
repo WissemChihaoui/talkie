@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import NavbarA from '../components/NavBar/NavBarA'
-import {BiPencil, BiImageAdd} from 'react-icons/bi'
-import {AiOutlineLogout} from 'react-icons/ai'
+import { FaUser, FaCog, FaComments } from 'react-icons/fa'
 import axios from 'axios'
+import Spline from '@splinetool/react-spline';
 import { getUserRoute } from '../utils/APIRoutes'
 
 const User = () => {
@@ -35,39 +35,51 @@ const User = () => {
 
     <>
         <NavbarA />
-        <section className='pt-20 flex gap-10 justify-center'>  
-            <div className='mx-10 flex flex-col  justify-center items-center md:flex-row bg-gray-900 p-5'>
-                <img  src={user.avatarImage} alt={user.username} className="w-32 h-32 rounded-full md:rounded md:h-auto md:w-40 md:m-6"/>
-                <div className='flex flex-col gap-4 items-center md:items-start'>
-                    <div className='flex justify-center items-center flex-col md:flex-row'>
-                    <label className="text-white text-2xl font-bold">{user.username} Chihaoui</label>
-<div className='flex flex-row bg-gray-900 h-min rounded-sm p-4 m-6 gap-3 '>
-                    <div className='text-white flex items-center bg-1 gap-2 px-3 text-xl py-2 rounded-sm cursor-pointer ease-in-out duration-100 hover:bg-slate-600'>
-                        <BiPencil className='cursor-pointer'/>
-                        <label className='hidden cursor-pointer'>Add Friend</label>
-                    </div>
-                    <div className='text-white flex items-center bg-1 gap-2 px-3 rounded-sm cursor-pointer ease-in-out duration-100 hover:bg-slate-600'>
-                        <BiImageAdd className='cursor-pointer' />
-                        <label className='hidden cursor-pointer'>Send Message</label>
-                    </div>
-                    <div className='text-white flex items-center bg-1 gap-2 px-3 rounded-sm cursor-pointer ease-in-out duration-100 hover:bg-slate-600'>
-                        <AiOutlineLogout className='cursor-pointer' />
-                        <label className='hidden cursor-pointer'>Report User</label>
-                    </div>
-                </div>
-                    </div>
-                    <label className='text-sm font-bold text-gray-500'>About Me:</label>
-                    <p className='w-80 text-sm text-gray-200  text-center md:text-start'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quae quis, impedit deleniti culpa, temporibus in aperiam quasi tenetur labore voluptatum doloremque magnam aliquam similique omnis tempora. Voluptatum, eos animi?</p>
-                </div>
-                
+        <section className='w-full px-6 mx-auto'>
+            <div className='relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl'>
+            <Spline scene="https://prod.spline.design/xFzIGbs7H3SQcibp/scene.splinecode" />
             </div>
-        </section>
-        <hr className='mx-10 '/>
-        <section className='flex items-center flex-col'>
-            <h1 className='text-white text-2xl m-5'>Pictures</h1>
-            <div className="flex flex-wrap gap-5 flex items-center justify-center">
-                <div className='border w-40  rounded '>
-                    <img src={user.avatarImage} className="w-full"/>
+            <div className='relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200'>
+                <div className='flex flex-wrap -mx-3'>
+                    <div className='flex-none w-auto max-w-full px-3'>
+                        <div className='text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200'>
+                            <img
+                                src={userData.avatarImage}
+                                alt="profile"
+                                className="w-full shadow-soft-sm rounded-xl h-full"
+                            />
+                        </div>
+                    </div>
+                    <div className='flex-none w-auto max-w-full px-3 my-auto'>
+                        <div className='h-full'>
+                            <h5 className="mb-1 text-xl capitalize">{user.username}</h5>
+                            <p class="mb-0 font-semibold leading-normal text-sm">22 - Tunisia</p>
+                        </div>
+                    </div>
+                    <div className='w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12'>
+                        <div className='relative right-0'>
+                            <ul className='relative flex flex-wrap p-1 gap-8 list-none bg-transparent rounded-xl'>
+                                <li className='z-30 text-center'>
+                                    <a href="" className='z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out bg-white text-slate-700'>
+                                        <FaUser className='text-slate-700' size={20} />
+                                        <span>Profile</span>
+                                    </a>
+                                </li>
+                                <li className='z-30 text-center'>
+                                    <a href="" className='z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out bg-white text-slate-700'>
+                                        <FaComments className='text-slate-700' size={20} />
+                                        <span>Chat</span>
+                                    </a>
+                                </li>
+                                <li className='z-30 text-center'>
+                                    <a href="" className='z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out bg-white text-slate-700'>
+                                        <FaCog className='text-slate-700' size={20} />
+                                        <span>Edit</span>
+                                    </a>
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
