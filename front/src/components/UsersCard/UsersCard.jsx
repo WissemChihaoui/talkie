@@ -1,16 +1,46 @@
 import React from 'react'
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
 
+import { FaUser } from 'react-icons/fa';
+import { BsFillChatLeftFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 const UsersCard = (props) => {
     const link=`./user/${props.name}`
   return (
     
-    <a  href={`/user/${props.id}`} className='border border-gray-100 rounded w-32 hover:border-gray-500 ease-in-out duration-100 cursor-pointer'>
-    <img src={props.image} alt='' className='w-full h-36 rounded-t'/>
-    <div className='p-2 text-gray-700 text-center'>
-      <label className='block'>{props.name}</label>
-      <span className='text-gray-400 text-sm'>22 - Tunisia</span>
-    </div>
-  </a>
+    <Card className="w-60">
+      <CardHeader floated={false} className="h-40">
+        <img src={props.image} alt="profile-picture" className='w-full h-full'/>
+      </CardHeader>
+      <CardBody className="text-center">
+        <Typography variant="h4" color="blue-gray" className="mb-2">
+          {props.name}
+        </Typography>
+        <Typography color="blue" className="font-medium" textGradient>
+          Tunisia, 23
+        </Typography>
+      </CardBody>
+      <CardFooter className="flex justify-center gap-7 pt-2">
+        <Link to={link}>
+        <Button color='blue' className='flex items-center gap-2' >
+          <FaUser />
+          
+        </Button>
+        </Link>
+        
+        <Button color='green' className='flex items-center gap-2'>
+          <BsFillChatLeftFill />
+         
+        </Button>
+      </CardFooter>
+    </Card>
   )
 }
 
