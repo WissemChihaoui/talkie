@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Edit = () => {
+const Edit = (dataUser) => {
+  const user = dataUser.dataUser
   return (
     <div>Edit</div>
   )

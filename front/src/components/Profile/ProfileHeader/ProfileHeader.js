@@ -3,6 +3,7 @@ import Spline from "@splinetool/react-spline";
 import { FaUser, FaCog, FaComments } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 const ProfileHeader = (userData) => {
+  const link = window.location.pathname;
     const user = userData.userData;
     return(
         <section className="w-full px-6 mx-auto">
@@ -34,7 +35,7 @@ const ProfileHeader = (userData) => {
                   <li className="z-30 text-center">
                     <Link
                       to={"/me"}
-                      className="z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out bg-cyan-200 text-slate-700"
+                      className={`z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out  text-slate-700 ${link === '/me' ? 'bg-cyan-200' : 'bg-white'}`}
                     >
                       <FaUser className="text-slate-700" size={20} />
                       <span>Profile</span>
@@ -43,7 +44,7 @@ const ProfileHeader = (userData) => {
                   <li className="z-30 text-center">
                     <Link
                       to={"/me/topics"}
-                      className="z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out bg-white text-slate-700"
+                      className={`z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out  text-slate-700 ${link === '/me/topics' ? 'bg-cyan-200' : 'bg-white'}`}
                     >
                       <FaComments className="text-slate-700" size={20} />
                       <span>Topics</span>
@@ -52,7 +53,7 @@ const ProfileHeader = (userData) => {
                   <li className="z-30 text-center">
                     <Link
                       to={"/me/edit"}
-                      className="z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out bg-white text-slate-700"
+                      className={`z-30 flex w-max gap-3 py-1 px-2 mb-0 transition-all border-0 rounded-lg ease-soft-in-out  text-slate-700 ${link === '/me/edit' ? 'bg-cyan-200' : 'bg-white'}`}
                     >
                       <FaCog className="text-slate-700" size={20} />
                       <span>Edit</span>

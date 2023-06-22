@@ -8,9 +8,10 @@ import FriendsList from "../../../components/Profile/FriendsList/FriendsList";
 import Details from "../../../components/Profile/Details/Details";
 import ImagesCarousel from "../../../components/Profile/ImagesCarousel/ImagesCarousel";
 
-const Info = (user) => {
+const Info = (dataUser) => {
+  const user = dataUser.dataUser
   return (
-    <>
+    <div className="grid grid-cols-3">
       <Details userData={user} />
       <Card className="mt-6 w-96">
         <CardBody>
@@ -26,7 +27,7 @@ const Info = (user) => {
         </CardBody>
       </Card>
       <ImagesCarousel userId={user._id} />
-    </>
+    </div>
   );
 };
 

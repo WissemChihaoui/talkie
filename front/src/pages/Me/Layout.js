@@ -42,7 +42,7 @@ const Me = () => {
     <>
       <NavbarA />
       <ProfileHeader userData={user} />
-      <section className="w-full px-12 py-6 mx-auto grid grid-cols-3"><Component /></section>
+      <section className="w-full px-12 py-6 mx-auto"><Component dataUser={user}/></section>
       
     </>
   );
