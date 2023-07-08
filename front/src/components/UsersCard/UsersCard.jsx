@@ -11,8 +11,8 @@ import {
 import { FaUser } from 'react-icons/fa';
 import { BsFillChatLeftFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-const UsersCard = (props) => {
-    const link=`./user/${props.name}`
+const UsersCard = ({props}) => {
+    const link=`/user/${props.name}`
   return (
     
     <Card className="w-60">

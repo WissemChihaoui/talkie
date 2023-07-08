@@ -38,7 +38,7 @@ const Me = () => {
     };
     getUserById();
   }, []);
-  console.log(user);
+  
   return (
     <>
       <NavbarA />

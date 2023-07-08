@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardHeader,
@@ -9,9 +10,57 @@ import {
   CardFooter,
   Checkbox,
 } from "@material-tailwind/react";
+import { getUserRoute } from '../../utils/APIRoutes'
+import axios from 'axios'
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-const Post = ({topicsData}) => {
-    console.log(topicsData)
+function dateConverter(x) {
+  const dateString = x;
+
+  const date = new Date(dateString);
+  const currentTime = new Date();
+
+  const timeDifferenceInMs = currentTime - date;
+
+  if (timeDifferenceInMs < 60000) {
+    // Less than a minute (60000 milliseconds)
+    const timeDifferenceInSeconds = Math.floor(timeDifferenceInMs / 1000);
+    return `${timeDifferenceInSeconds} seconds`;
+  } else if (timeDifferenceInMs < 3600000) {
+    // Less than an hour (3600000 milliseconds)
+    const timeDifferenceInMinutes = Math.floor(
+      timeDifferenceInMs / (1000 * 60)
+    );
+    return `${timeDifferenceInMinutes} minutes`;
+  } else if (timeDifferenceInMs < 86400000) {
+    // Less than 24 hours (86400000 milliseconds)
+    const timeDifferenceInHours = Math.floor(
+      timeDifferenceInMs / (1000 * 60 * 60)
+    );
+    return `${timeDifferenceInHours} hours`;
+  } else {
+    const timeDifferenceInDays = Math.floor(
+      timeDifferenceInMs / (1000 * 60 * 60 * 24)
+    );
+    return `${timeDifferenceInDays} days`;
+  }
+}
+const Post = ({ topicsData }) => {
+  const [user, setUser] = useState([])
+  useEffect(()=>{
+    const getUserById = async () =>{
+        const {data} =await axios.get(`${getUserRoute}/${topicsData.author}`)
+        
+    if(data == undefined){
+        alert("Cannot Find the user")
+    }else{
+        setUser(data.userDataId)
+       
+    }
+    }
+    getUserById();
+    
+},[])
+  
   const [dropMenu, setDropMenu] = useState(false);
   const menuRef = useRef(null);
   useEffect(() => {
@@ -23,14 +72,14 @@ const Post = ({topicsData}) => {
 
   const handleClickOutside = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setDropMenu(false);
+      setDropMenu(false);
     }
   };
   return (
     <Card
       color="transparent"
       shadow={false}
-      className="w-full  bg-white py-2 px-4"
+      className="w-full  bg-white py-2 px-4 h-max "
     >
       <CardHeader
         color="transparent"
@@ -39,40 +88,38 @@ const Post = ({topicsData}) => {
         className="mx-0 flex items-center gap-4 pt-0 pb-8 justify-between "
       >
         <div className="flex items-center gap-4">
-          <Avatar
-            size="md"
-            
-            src={topicsData.avatar}
-            alt={topicsData.username}
-            
-          />
+          <Avatar size="md" src={user.avatarImage} alt={user.username} />
           <div className="flex w-full flex-col gap-0.5">
             <div className="flex items-center justify-between">
+              <Link to={`/user/${user.username}`}>
               <Typography variant="h5" color="blue-gray">
-                {topicsData.username}
+                {user.username}
               </Typography>
+              </Link>
             </div>
-            <Typography color="blue-gray">{topicsData.topicsTitle}</Typography>
+            <Typography color="blue-gray">{dateConverter(topicsData.createdAt)}</Typography>
           </div>
         </div>
         <div className="relative z-100">
-          <BiDotsHorizontalRounded className="text-[24px] cursor-pointer" onClick={()=>setDropMenu(true)}/>
-          
+          <BiDotsHorizontalRounded
+            className="text-[24px] cursor-pointer"
+            onClick={() => setDropMenu(true)}
+          />
         </div>
-        
       </CardHeader>
       <CardBody className="mb-6 p-0 flex flex-col gap-2">
-        <Typography>
-          &quot;{topicsData.topicsContent}&quot;
-        </Typography>
-        {topicsData.topicsImage? 
-        <div>
-          <img 
-          src={topicsData.topicsImage}
-          alt="image" 
-          className="w-full h-full object-cover rounded-2"
-        />
-        </div> : ''}
+        <Typography>&quot;{topicsData.content}&quot;</Typography>
+        {topicsData.topicsImage ? (
+          <div>
+            <img
+              src={topicsData.topicsImage}
+              alt="image"
+              className="w-full h-[300px] object-cover rounded-2"
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </CardBody>
       <CardFooter className="p-0">
         <div className="flex">
@@ -133,38 +180,43 @@ const Post = ({topicsData}) => {
           </div>
         </div>
       </CardFooter>
-      <div ref={menuRef} className={`${dropMenu ? 'block' : 'hidden'} absolute dropdown-menu min-w-max text-base z-50 float-left py-2 list-none top-8 text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0  bg-white`}>
-          <Link
-            to=""
-            className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
-          >
-            Edit
-          </Link>
-          <Link
-            to=""
-            className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
-          >
-            Delete
-          </Link>
-          <Link
-            to=""
-            className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
-          >
-            Likes
-          </Link>
-          <Link
-            to=""
-            className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
-          >
-            Share
-          </Link>
-          <Link
-            to=""
-            className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
-          >
-            Make it private
-          </Link>
-        </div>
+      <div
+        ref={menuRef}
+        className={`${
+          dropMenu ? "block" : "hidden"
+        } absolute dropdown-menu min-w-max text-base z-50 float-left py-2 list-none top-8 text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0  bg-white`}
+      >
+        <Link
+          to=""
+          className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
+        >
+          Edit
+        </Link>
+        <Link
+          to=""
+          className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
+        >
+          Delete
+        </Link>
+        <Link
+          to=""
+          className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
+        >
+          Likes
+        </Link>
+        <Link
+          to=""
+          className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
+        >
+          Share
+        </Link>
+        <Link
+          to=""
+          className="dropdown-item text-sm py-2 px-4 font-normal  w-full whitespace-nowrap bg-transparent text-gray-400 hover:bg-gray-900 flex items-center"
+        >
+          Make it private
+        </Link>
+      </div>
     </Card>
   );
 };

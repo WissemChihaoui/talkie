@@ -67,7 +67,7 @@ function SetAvatar() {
       }
     };
   }, [file]);
-  console.log(fileDataURL);
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();

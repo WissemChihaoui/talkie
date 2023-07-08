@@ -23,11 +23,16 @@ const ProfileHeader = (userData) => {
             </div>
             <div className="flex-none w-auto max-w-full px-3 my-auto">
               <div className="h-full">  
-                <h5 className="mb-1 text-xl capitalize">{user.username}</h5>
-                <p class="mb-0 font-semibold leading-normal text-sm">
-                  22 - Tunisia
+                <h5 className="mb-1 text-xl capitalize ">{user.username}
+                <span className='ml-2 font-light text-sm'>Tunisia, 22</span>
+                </h5>
+                <p class="mb-0 font-semibold leading-normal text-sm ">
+                Hello From my profile, I'm Wissem Chihaoui From Mahdia The Owner of this Website
                 </p>
               </div>
+            </div>
+            <div className=''>
+              <p></p>
             </div>
             <div className="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
               <div className="relative right-0">

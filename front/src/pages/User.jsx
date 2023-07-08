@@ -20,7 +20,7 @@ const User = () => {
     useEffect(()=>{
         const getUserById = async () =>{
             const {data} =await axios.get(`${getUserRoute}/${userId}`)
-            console.log(data.userDataId)
+            
         if(data == undefined){
             alert("Cannot Find the user")
         }else{
