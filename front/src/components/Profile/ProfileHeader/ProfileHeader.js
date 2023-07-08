@@ -8,7 +8,7 @@ const ProfileHeader = (userData) => {
     return(
         <section className="w-full px-6 mx-auto">
         <div className="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl">
-          <Spline scene="https://prod.spline.design/xFzIGbs7H3SQcibp/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/xFzIGbs7H3SQcibp/scene.splinecode" />
         </div>
         <div className="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
           <div className="flex flex-wrap -mx-3">

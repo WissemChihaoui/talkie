@@ -73,7 +73,7 @@ const Signin = () => {
     };
 
   return (
-    <div className="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
+    <div className="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500 h-[100vh]">
      <ToastContainer />
     <main className="mt-0 transition-all duration-200 ease-soft-in-out">
       <section>

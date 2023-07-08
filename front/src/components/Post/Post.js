@@ -30,7 +30,7 @@ const Post = ({topicsData}) => {
     <Card
       color="transparent"
       shadow={false}
-      className="w-full max-w-[26rem] bg-white py-2 px-4"
+      className="w-full  bg-white py-2 px-4"
     >
       <CardHeader
         color="transparent"
@@ -41,7 +41,7 @@ const Post = ({topicsData}) => {
         <div className="flex items-center gap-4">
           <Avatar
             size="md"
-            variant="circular"
+            
             src={topicsData.avatar}
             alt={topicsData.username}
             
@@ -61,10 +61,18 @@ const Post = ({topicsData}) => {
         </div>
         
       </CardHeader>
-      <CardBody className="mb-6 p-0">
+      <CardBody className="mb-6 p-0 flex flex-col gap-2">
         <Typography>
           &quot;{topicsData.topicsContent}&quot;
         </Typography>
+        {topicsData.topicsImage? 
+        <div>
+          <img 
+          src={topicsData.topicsImage}
+          alt="image" 
+          className="w-full h-full object-cover rounded-2"
+        />
+        </div> : ''}
       </CardBody>
       <CardFooter className="p-0">
         <div className="flex">

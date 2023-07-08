@@ -11,6 +11,7 @@ import Topics from "./Topics/Topics";
 import Info from "./Info/Info";
 import Edit from "./Edit/Edit";
 import ProfileHeader from "../../components/Profile/ProfileHeader/ProfileHeader";
+import AsideNav from "../../components/AsideNav/AsideNav";
 
 const Me = () => {
   const { link } = useParams();
@@ -41,8 +42,16 @@ const Me = () => {
   return (
     <>
       <NavbarA />
+      <div className="flex pt-4 ">
+        <AsideNav />
+        <div className="overflow-x-scroll h-fit max-h-[90vh] w-4/5">
       <ProfileHeader userData={user} />
-      <section className="w-full px-12 py-6 mx-auto"><Component dataUser={user}/></section>
+      <section className="w-full px-12 py-6 mx-auto">
+        <Component dataUser={user}/>
+      </section>
+      </div>
+      </div>
+      
       
     </>
   );
